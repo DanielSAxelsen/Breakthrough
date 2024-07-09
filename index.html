@@ -1,35 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BREAKTHROUGH</title>
-    <link rel="stylesheet" type="text/css" href="style.css"> <!-- Link to your CSS file -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --White: rgb(255,255,255);
+      --dark: rgb(0, 0, 0);
+      --yellow: rgb(253, 216, 53);
+      --blue: rgb(98, 0, 234);
+      
+      --c1: rgb(255,255,255);
+      --c2: rgb(0, 0, 0);
+      
+      --left-color: var(--c1);
+      --right-color: var(--c2);
+    }
+
+    body {  
+      background-color: var(--c2);
+      margin: 0px;
+    }
+
+    .side {
+      display: grid;
+      height: 100vh;
+      overflow: hidden;
+      place-items: center;
+      position: absolute;
+      width: 100%;
+    }
+
+    .side .title {
+      font-family: "Montserrat", sans-serif;
+      font-size: 5vw;
+      font-weight: 800;
+      margin: 0px 10vw;
+      width: 80vw;
+    }
+
+    .side .fancy {
+      font-family: "Permanent Marker", cursive;
+      font-size: 1.8em;
+      line-height: 0.6em;
+    }
+
+    #left-side {
+      background-color: var(--c1);
+      width: 60%;
+      z-index: 2;
+    }
+
+    #left-side .title {  
+      color: var(--c2);  
+    }
+
+    #left-side .fancy {
+      color: var(--c2);
+    }
+
+    #right-side {
+      background-color: var(--right-color);
+    }
+
+    #right-side .title {
+      color: var(--c1);
+    }
+
+    #right-side .fancy {
+      color: var(--c1);
+    }
+
+    /* Button Styles */
+    #subpage-button {
+      background-color: var(--c2);
+      border: 2px solid var(--c1);
+      border-radius: 10px;
+      color: var(--c1);
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.5em;
+      padding: 10px 20px;
+      position: fixed; /* Changed to fixed positioning */
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+      width: 200px; /* Adjust as needed for desired button size */
+      height: 50px; /* Adjust as needed for desired button size */
+      line-height: 50px; /* Adjust to vertically center text */
+      z-index: 3; /* Ensure the button stays above other content */
+    }
+
+    #subpage-button:hover {
+      background-color: var(--c1);
+      color: var(--c2);
+      border: 2px solid var(--c2);
+    }
+  </style>
 </head>
 <body>
-    <div id="left-side" class="side">
-        <h2 class="title">
-            
-            <span class="fancy">BREAKTHROUGH</span>      
-        </h2>
-    </div>
-    <div id="right-side" class="side">
-        <h2 class="title">
-            
-            <span class="fancy">BREAKTHROUGH</span>     
-        </h2>
-    </div>
+  <div id="left-side" class="side">
+    <h2 class="title">
+      <span class="fancy">BREAKTHROUGH</span> 
+      2024
+    </h2>
+  </div>
+  <div id="right-side" class="side">
+    <h2 class="title">
+      <span class="fancy">BREAKTHROUGH</span>
+    </h2>
+  </div>
 
-    <a id="source-link" class="meta-link" href="https://superlist.com" target="_blank">
-        <i class="fa-solid fa-link"></i>
-        <span class="roboto-mono">Source</span>
-    </a>
+  <a id="subpage-button" href="/subpage.html">Jump in?</a>
 
-    <a id="yt-link" class="meta-link" href="https://youtu.be/zGKNMm4L-r4" target="_blank">
-        <i class="fa-brands fa-youtube"></i>
-        <span>2 min tutorial</span>
-    </a>
+  <a id="source-link" class="meta-link" href="https://superlist.com" target="_blank">
+    <i class="fa-solid fa-link"></i>
+    <span class="roboto-mono">Source</span>
+  </a>
 
-    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+  <a id="yt-link" class="meta-link" href="https://youtu.be/zGKNMm4L-r4" target="_blank">
+    <i class="fa-brands fa-youtube"></i>
+    <span>2 min tutorial</span>
+  </a>
+
+  <script>
+    const left = document.getElementById("left-side");
+
+    const handleMove = e => {
+      left.style.width = `${e.clientX / window.innerWidth * 100}%`;
+    }
+
+    document.onmousemove = e => handleMove(e);
+
+    document.ontouchmove = e => handleMove(e.touches[0]);
+  </script>
 </body>
 </html>
